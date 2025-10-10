@@ -1,0 +1,34 @@
+appId: com.playwrapp.app
+productName: Playwrapp
+copyright: Copyright © 2024 Playwrapp
+
+directories:
+  output: release
+  buildResources: build
+
+files:
+  - dist/**/*
+  - node_modules/**/*
+  - package.json
+
+mac:
+  icon: build/icon.icns
+  category: public.app-category.developer-tools
+
+win:
+  icon: build/icon.ico
+  target:
+    - target: nsis
+      arch:
+        - x64
+
+linux:
+  icon: build/icon.png
+  target:
+    - target: AppImage
+      arch:
+        - x64
+
+nsis:
+  oneClick: false
+  allowToChangeInstallationDirectory: true
