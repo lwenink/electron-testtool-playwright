@@ -1,8 +1,10 @@
 import { app, BrowserWindow, Menu } from 'electron';
 import * as path from 'path';
 import { BrowserService } from './services/BrowserService';
+import { RecordingService } from './services/RecordingService';
 import { LogService } from './services/LogService';
 import { BrowserHandler } from './ipc/handlers/browserHandler';
+import { RecordingHandler } from './ipc/handlers/recordingHandler';
 import { LogHandler } from './ipc/handlers/logHandler';
 import Logger from './utils/logger';
 import { WINDOW_CONFIG, APP_NAME } from '@/shared/constants';
@@ -10,16 +12,20 @@ import { WINDOW_CONFIG, APP_NAME } from '@/shared/constants';
 class PlaywrappApplication {
   private mainWindow: BrowserWindow | null = null;
   private browserService: BrowserService;
+  private recordingService: RecordingService;
   private logService: LogService;
   private logger: Logger;
   private browserHandler: BrowserHandler;
+  private recordingHandler: RecordingHandler;
   private logHandler: LogHandler;
 
   constructor() {
     this.browserService = new BrowserService();
+    this.recordingService = new RecordingService();
     this.logService = new LogService();
     this.logger = new Logger(this.logService);
     this.browserHandler = new BrowserHandler(this.browserService, this.logger);
+    this.recordingHandler = new RecordingHandler(this.browserService, this.recordingService, this.logger);
     this.logHandler = new LogHandler(this.logService);
   }
 
