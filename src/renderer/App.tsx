@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserView } from './components/BrowserView';
+import { ScriptManager } from './components/ScriptManager';
 import { LogViewer } from './components/LogViewer';
 import { APP_NAME, APP_VERSION } from '@/shared/constants';
 
@@ -15,6 +16,10 @@ const App: React.FC = () => {
         <div className="app-grid">
           <div className="browser-section">
             <BrowserView />
+          </div>
+          
+          <div className="script-section">
+            <ScriptManager />
           </div>
           
           <div className="log-section">

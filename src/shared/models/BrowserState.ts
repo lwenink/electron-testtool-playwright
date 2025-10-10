@@ -4,4 +4,6 @@ export interface BrowserState {
   headless: boolean;
   pid?: number;
   launchedAt?: Date;
+  currentUrl?: string;
+  hasActivePage: boolean;
 }
