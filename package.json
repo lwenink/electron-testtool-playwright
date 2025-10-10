@@ -7,6 +7,7 @@
     "dev:main": "tsc --watch --project tsconfig.main.json",
     "dev:renderer": "vite",
     "build": "tsc && vite build",
+    "start": "npm run build && electron .",
     "dist": "electron-builder"
   },
   "dependencies": {
